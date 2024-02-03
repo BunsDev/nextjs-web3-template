@@ -15,9 +15,9 @@ const Home: NextPage = () => {
     useEffect(() => {
         console.log(window.localStorage.getItem(connectorLocalStorageKey));
 
-        activate(injected, undefined, true).catch((error) => {
-            activate(injected);
-        })
+        // activate(injected, undefined, true).catch((error) => {
+        //     activate(injected);
+        // })
     }, [])
 
     return (
@@ -45,9 +45,12 @@ const Home: NextPage = () => {
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
+                    border: "4px solid",
+                    borderRadius: "5px",
+                    padding: "20px",
                 }}
             >
-                {account ? `Connected to ${formatAddress(account ?? '')} on ${getChainInfo(chainId, 'NETWORK')}` : 'Disconnected'}
+                {account ? `Connected to ${formatAddress(account ?? '')} on ${getChainInfo(chainId, 'NETWORK')}` : 'Wallet Disconnected'}
             </div>
         </div>
     );
