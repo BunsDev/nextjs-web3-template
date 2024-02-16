@@ -5,6 +5,7 @@ import { AddressZero } from "@ethersproject/constants";
 import { isAddress } from "utils/isAddress";
 import { getProviderOrSigner } from "utils";
 import { Contract } from "@ethersproject/contracts";
+import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 
 // export const useExampleContract = (address: string, withSignerIfPossible = true) => {
 //   return useContract(address, ContractAbi, withSignerIfPossible);
@@ -31,24 +32,40 @@ import { Contract } from "@ethersproject/contracts";
 // }
 
 // returns null on errors
-export function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
-  const { library, account } = useActiveWeb3React()
+export function useContract(
+  contractAddress: string | undefined,
+  ABI: any,
+  withSignerIfPossible = true
+): Contract | null {
+  const { library } = useActiveWeb3React();
+  const { address } = useWeb3ModalAccount()
+
 
   return useMemo(() => {
-    if (!address || !ABI || !library) return null
+    if (!contractAddress || !ABI || !library) return null;
     try {
-      return getContract(address, ABI, library, withSignerIfPossible && account ? account : undefined)
+      return getContract(
+        contractAddress,
+        ABI,
+        library,
+        withSignerIfPossible && address ? address : undefined
+      );
     } catch (error) {
-      console.error('Failed to get contract', error)
-      return null
+      console.error("Failed to get contract", error);
+      return null;
     }
-  }, [address, ABI, library, withSignerIfPossible, account])
+  }, [contractAddress, ABI, library, withSignerIfPossible, address]);
 }
 
 // account is optional
-export function getContract(address: string, ABI: any, library: Web3Provider, account?: string): Contract {
-  if (!isAddress(address) || address === AddressZero) {
-    throw Error(`Invalid 'address' parameter '${address}'.`)
+export function getContract(
+  contractAddress: string,
+  ABI: any,
+  library: Web3Provider,
+  account?: string
+): Contract {
+  if (!isAddress(contractAddress) || contractAddress === AddressZero) {
+    throw Error(`Invalid 'contractAddress' parameter '${contractAddress}'.`);
   }
-  return new Contract(address, ABI, getProviderOrSigner(library, account))
+  return new Contract(contractAddress, ABI, getProviderOrSigner(library, account));
 }
