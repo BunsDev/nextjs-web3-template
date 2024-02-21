@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "target": "ES6",
+    "baseUrl": "src",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -16,6 +16,9 @@
     "jsx": "preserve",
     "downlevelIteration": true,
     "incremental": true,
+    "paths": {
+      "@/*": ["*"]
+    },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
