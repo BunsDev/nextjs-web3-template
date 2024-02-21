@@ -6,13 +6,12 @@ import { injected } from "config/constants/wallets";
 import { connectorLocalStorageKey } from "config/connectors/index";
 import { BLUE, ChainColor, ChainId } from "config";
 import formatAddress from "functions/formatAddress";
-import { useWeb3Modal } from '@web3modal/ethers/react'
-// import { useWeb3ModalAccount } from '@web3modal/ethers/react'
+import { useWeb3Modal } from '@web3modal/ethers/react';
 
 const Home: NextPage = () => {
   const { account, activate, chainId } = useActiveWeb3React();
-   // @ts-ignore
-//   const { address } = useWeb3ModalAccount()
+  // @ts-ignore
+  //   const { address } = useWeb3ModalAccount()
   const fontColor = ChainColor[chainId ?? ChainId.FANTOM];
   const { open } = useWeb3Modal()
 
