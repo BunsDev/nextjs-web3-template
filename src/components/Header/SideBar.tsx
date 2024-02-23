@@ -17,11 +17,11 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 const SideBar = () => {
     const router = useRouter()
     const { open } = useWeb3Modal()
-    const { account } = useActiveWeb3React()
+    const { address } = useWeb3ModalAccount()
     const [showMenu, setShowMenu] = useState(false)
     const [showMore, setShowMore] = useState(false)
 
-    const isConnected = account ? true : false
+    const isConnected = address ? true : false
 
     const homeRoute = useCallback(() => {
         setShowMenu(false)
@@ -143,7 +143,7 @@ const SideBar = () => {
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
-                                width: account ? "14rem" : "12rem",
+                                width: address ? "14rem" : "12rem",
                                 height: "1.5rem",
                                 marginBottom: "12px",
                                 justifyContent: "center",
@@ -161,8 +161,8 @@ const SideBar = () => {
                                     : () => open({ view: 'Connect' })
                             }
                         >
-                            {account
-                                ? `${formatAddress(account ?? "")}`
+                            {address
+                                ? `${formatAddress(address ?? "")}`
                                 : 'Connect Wallet'
                             }
                         </div>
