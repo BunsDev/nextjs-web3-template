@@ -1,16 +1,10 @@
-import { ethers } from 'ethers'
-import { useWeb3ModalProvider } from '@web3modal/ethers/react'
+import { useAccount, useSignMessage } from 'wagmi'
 
 function SignButton() {
-  const { walletProvider } = useWeb3ModalProvider()
+  const { signMessage } = useSignMessage()
+  const { address } = useAccount()
 
-  async function onSignMessage() {
-    // @ts-ignore
-    const provider = new ethers.providers.Web3Provider(walletProvider)
-    const signer = provider.getSigner()
-    const signature = await signer?.signMessage('Hello Web3Modal Ethers')
-    console.log(signature)
-  }
-
-  return <button onClick={() => onSignMessage()}>Sign Message</button>
+  return <button onClick={() => signMessage({ message: 'hello world', account: address })}>Sign message</button>
 }
+
+export default SignButton
