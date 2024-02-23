@@ -29,7 +29,7 @@ const SideBar = () => {
     }, [])
     const swapRoute = useCallback(() => {
         setShowMenu(false)
-        router.push(`/`)
+        router.push(`/swap`)
     }, [])
     const docsRoute = useCallback(() => {
         setShowMenu(false)
@@ -45,8 +45,8 @@ const SideBar = () => {
     const isSwap = swapPage
     const isHome = homePage
 
-    const toggleShow = (toggleMenu) => { 
-            toggleMenu ? setShowMenu(!showMenu) 
+    const toggleShow = (toggleMenu) => {
+        toggleMenu ? setShowMenu(!showMenu)
             : setShowMore(!showMore)
     }
 
@@ -115,13 +115,13 @@ const SideBar = () => {
                 }
                 {!showMenu &&
                     <div onClick={() => toggleShow(true)}>
-                    {/* @ts-ignore */}
-                    <BarsIcon
-                        fillPrimary={showMenu ? `${BLUE}` : `${WHITE}`}
-                        fillSecondary={showMenu ? `${WHITE}` : `${BLUE}`}
-                        className={'w-7 h-7'}
-                        size={24}
-                    />
+                        {/* @ts-ignore */}
+                        <BarsIcon
+                            fillPrimary={showMenu ? `${BLUE}` : `${WHITE}`}
+                            fillSecondary={showMenu ? `${WHITE}` : `${BLUE}`}
+                            className={'w-7 h-7'}
+                            size={24}
+                        />
                     </div>
                 }
 
@@ -197,8 +197,7 @@ const SideBar = () => {
                                 borderRight: isHome ? '2px solid' : '',
                             }}
                         >
-                            {/* @ts-ignore */}
-                            <Typography variant="h1" color={WHITE} align="center"
+                            <Typography variant="h1" color={WHITE}
                                 style={{
                                     fontSize: '18px',
                                     fontWeight: 'bold',
@@ -229,8 +228,7 @@ const SideBar = () => {
                                 borderRight: isSwap ? '2px solid' : '',
                             }}
                         >
-                            {/* @ts-ignore */}
-                            <Typography variant="h1" color="textPrimary" align="center"
+                            <Typography variant="h1" color="textPrimary"
                                 style={{
                                     fontSize: '18px',
                                     fontWeight: 'bold',
@@ -242,7 +240,6 @@ const SideBar = () => {
 
                         {/* MORE OPTIONS */}
 
-                        {/* @ts-ignore */}
                         <Divider />
 
                         <div
@@ -258,17 +255,15 @@ const SideBar = () => {
                                 color: WHITE,
                                 backgroundColor: BLUE,
                             }}
-                            onClick = { () => toggleShow(false) }
+                            onClick={() => toggleShow(false)}
                         >
                             {!showMore ? 'SHOW MORE' : 'SHOW LESS'}
                             {!showMore ?
-                                // @ts-ignore
                                 <RightIcon
                                     fillPrimary={WHITE}
                                     fillSecondary={WHITE}
                                     size={16}
                                 /> :
-                                // @ts-ignore
                                 <DownIcon
                                     fillPrimary={WHITE}
                                     fillSecondary={WHITE}
@@ -296,8 +291,7 @@ const SideBar = () => {
                                     marginBottom: '0.5rem',
                                 }}
                             >
-                                {/* @ts-ignore */}
-                                <Typography variant="h1" color="textPrimary" align="center"
+                                <Typography variant="h1" color="textPrimary"
                                     style={{
                                         fontSize: '18px',
                                         fontWeight: 'bold',
