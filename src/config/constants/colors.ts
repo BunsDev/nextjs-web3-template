@@ -1,3 +1,8 @@
 export const BLUE = "#005AFF"
+// export const BLUE = "#666BE7"
+export const DARK = "#0E193E"
 export const WHITE = "#FFFFFF"
 export const BLACK = "#000000"
+export const RED = "#FF0000"
+// export const GREEN = "#50C878"
+export const GREEN = "#90EE90"
