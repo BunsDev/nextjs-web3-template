@@ -29,7 +29,7 @@ const SideBar = () => {
     }, [])
     const swapRoute = useCallback(() => {
         setShowMenu(false)
-        router.push(`/swap`)
+        router.push(`/exchange`)
     }, [])
     const docsRoute = useCallback(() => {
         setShowMenu(false)
@@ -40,7 +40,7 @@ const SideBar = () => {
         router.push(`https://x.com/`)
     }, [])
 
-    const swapPage = router.pathname.startsWith('/swap')
+    const swapPage = router.pathname.startsWith('/exchange') || router.pathname.startsWith('/swap')
     const homePage = router.pathname.endsWith('/')
     const isSwap = swapPage
     const isHome = homePage
