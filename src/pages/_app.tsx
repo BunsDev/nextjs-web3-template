@@ -17,7 +17,6 @@ export const metadata = {
   description: 'Template for Web3 Projects'
 }
 
-
 function MyApp({ Component, pageProps }) {
   // Allows for conditionally setting a layout to be hoisted per page
   const Layout = Component.Layout || DefaultLayout

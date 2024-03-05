@@ -24,20 +24,7 @@ export function Exchange() {
 
   // squid details //
   const baseUrl = 'https://api.0xsquid.com'
-  const integratorId = 'example-swap-widget' // process.env.NEXT_PUBLIC_SQUID_INTEGRATOR_ID
-
-  type Chains = {
-    chainId: string;
-    name: string;
-    logoURI: string;
-  }
-
-  const fromAmountWithDecimals = (_fromAmount) => {
-    return new BigNumber(_fromAmount.toString())
-      .times(10 ** 18)
-      .toString()
-  }
-
+  const integratorId = process.env.NEXT_PUBLIC_SQUID_INTEGRATOR_ID || 'example-swap-widget'
 
   // GETS: ROUTE //
   const getRoute = async () => { // _fromAmount
